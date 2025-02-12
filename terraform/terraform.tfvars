@@ -1,0 +1,8 @@
+project_id       = "votre-projet-id"
+region           = "us-central1"
+zone             = "us-central1-a"
+credentials_file = "chemin/vers/votre/credentials.json"
+instance_name    = "mon-instance"
+machine_type     = "e2-medium"
+image            = "debian-cloud/debian-11"
+network_interface = "default"
