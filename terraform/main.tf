@@ -20,16 +20,7 @@ resource "google_compute_instance" "vm_instance" {
     access_config {}
   }
 
-  metadata_startup_script = <<EOT
-    #!/bin/bash
-    apt update && apt install -y nginx
-    systemctl start nginx
-    systemctl enable nginx
-  EOT
+  metadata_startup_script = file("scripts.sh")
 
   tags = ["web"]
-}
-
-output "instance_ip" {
-  value = google_compute_instance.vm_instance.network_interface[0].access_config[0].nat_ip
 }
