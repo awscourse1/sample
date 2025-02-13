@@ -14,12 +14,7 @@ resource "google_compute_instance" "vm_instance" {
     access_config {}
   }
 
-  metadata_startup_script = <<EOT
-    #!/bin/bash
-    apt update && apt install -y nginx
-    systemctl start nginx
-    systemctl enable nginx
-  EOT
+  metadata_startup_script = file("startup.sh")
 
   tags = ["web"]
 }
