@@ -1,0 +1,22 @@
+  Vous travaillez pour la startup FoodFast, spécialisée dans la livraison de repas. 
+Elle développe une application web en "Node.js" avec une base de données PostgreSQL.
+
+L’équipe de développement souhaite mettre en place une chaîne CI/CD complète pour :
+
+  Automatiser le déploiement et les tests.
+  Garantir un déploiement fiable sur un cluster EKS (Elastic Kubernetes Service) sur AWS ou Garantir un déploiement fiable sur une instance ec2 sur AWS.
+  Intégrer des outils de qualité de code et de supervision.
+
+
+Objectifs de l'étude de cas :
+- Définir une architecture cible cloud-native sur AWS.
+- présenter la structure du projet (repertoire | fichiers)
+- présenter les outils utilisés (listing) pour le projet
+- les étapes de réalisation du projet
+- Écrire les templates de scripts Terraform pour provisionner l’infrastructure (VPC, EKS(Ec2), RDS PostgreSQL, ECR).
+- Proposer un template de pipeline CI/CD GitLab avec :
+    Étapes : build, test, push, déploiement sur EKS via ArgoCD.
+    Intégration de SonarQube (qualité de code) et Trivy (scan de vulnérabilités).
+
+- Pour la supervision via Prometheus + Grafana : proposer des commandes d'installation de prometheus et grafana
+- proposer un readme
