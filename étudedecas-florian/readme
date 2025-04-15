@@ -1,0 +1,67 @@
+# FoodFast - Déploiement Cloud AWS
+
+# Outils utilisés
+CI/CD : GitLab CI/CD
+
+Infra as Code : Terraform
+
+Conteneurisation : Docker
+
+Orchestration : Kubernetes (EKS)
+
+Déploiement continu : ArgoCD
+
+Sécurité : Trivy (scan vulnérabilités)
+
+Qualité de code : SonarQube
+
+Supervision : Prometheus, Grafana, Node Exporter
+
+Base de données : PostgreSQL (RDS)
+
+Hébergement d'image Docker : ECR
+
+# Structure du projet
+foodfast/
+├── backend/
+│   ├── Dockerfile
+│   ├── app.js
+│   ├── routes/
+│   └── ...
+├── .gitlab-ci.yml
+├── infra/
+│   ├── main.tf
+│   ├── variables.tf
+│   └── rds.tf
+├── k8s/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   └── ingress.yaml
+└── README.md
+
+
+
+# Supervision Prometheus + Grafana
+
+# Ajout des Helm repositories
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+# Installation de Prometheus
+helm install prometheus prometheus-community/prometheus
+
+# Installation de Grafana
+helm install grafana grafana/grafana --set adminPassword='admin'
+
+# Installation de Node Exporter (si EC2)
+sudo yum install -y wget
+wget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter.linux-amd64.tar.gz
+tar xvfz node_exporter*.tar.gz
+./node_exporter &
+
+## Commandes utiles
+```bash
+terraform init
+terraform apply
+kubectl apply -f k8s/
