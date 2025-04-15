@@ -111,8 +111,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 
 ```bash
 # Exécuter le script d'installation de Prometheus et Grafana
-chmod +x monitoring/installer-monitoring.sh
-./monitoring/installer-monitoring.sh
+chmod +x monitoring/install.sh
+./monitoring/install.sh
 ```
 
 ### 5. Lancer le pipeline CI/CD
