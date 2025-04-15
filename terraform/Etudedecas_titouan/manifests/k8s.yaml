@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodfast-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: foodfast
+  template:
+    metadata:
+      labels:
+        app: foodfast
+    spec:
+      containers:
+      - name: foodfast
+        image: your-ecr-url/foodfast-app:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: foodfast-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: foodfast
+  ports:
+    - port: 80
+      targetPort: 3000
